@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منصة أ/خالد عبد الواحد</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Tajawal:wght@400;500;700;800&display=swap"
+    rel="stylesheet">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Liquid blobs background -->
+  <div class="blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div id="toast-container"></div>
+  <div id="loading-overlay" class="loading-overlay" style="display:none">
+    <div class="spinner"></div>
+    <div id="loading-text" style="color:white; margin-top:1rem; font-weight:bold; font-size:1.2rem;">جاري التحميل...</div>
+  </div>
+
+  <!-- AUTH SECTION -->
+  <div id="auth-section" class="auth-wrapper">
+    <div class="auth-glass">
+      <div class="auth-header">
+        <h1 class="logo-title" style="line-height:1.4;">منصة<br><span style="color:var(--primary); font-size: 0.9em; display:inline-block; margin-top:0.2rem;">أ. خالد عبد الواحد</span></h1>
+        <p> منصة لتعليم اللغة العربية </p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-target="login-form">تسجيل الدخول</button>
+        <button class="auth-tab" data-target="register-form">حساب جديد</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form active-form">
+        <div class="form-group">
+          <i class="fa-solid fa-phone"></i>
+          <input type="tel" id="login-phone" placeholder="رقم الهاتف" required>
+        </div>
+        <div class="form-group">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="login-password" placeholder="كلمة المرور" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">دخول <i class="fa-solid fa-arrow-left"></i></button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" class="auth-form" style="display:none;">
+        <div class="name-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="form-group">
+            <input type="text" id="reg-fn1" placeholder="الاسم الأول" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="reg-fn2" placeholder="الاسم الثاني" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="reg-fn3" placeholder="الاسم الثالث" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <i class="fa-solid fa-phone"></i>
+          <input type="tel" id="reg-phone" placeholder="رقم هاتف الطالب" required>
+        </div>
+        <div class="form-group">
+          <i class="fa-solid fa-phone-volume"></i>
+          <input type="tel" id="reg-parent-phone" placeholder="رقم هاتف ولي الأمر" required>
+        </div>
+
+        <div class="form-group">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <select id="reg-grade" required>
+            <option value="" disabled selected>اختر الصف الدراسي</option>
+            <option value="الرابع الابتدائي">الرابع الابتدائي</option>
+            <option value="الخامس الابتدائي">الخامس الابتدائي</option>
+            <option value="السادس الابتدائي">السادس الابتدائي</option>
+            <option value="الأول الإعدادي">الأول الإعدادي</option>
+            <option value="الثاني الإعدادي">الثاني الإعدادي</option>
+            <option value="الثالث الإعدادي">الثالث الإعدادي</option>
+            <option value="الأول الثانوي">الأول الثانوي</option>
+            <option value="الثاني الثانوي">الثاني الثانوي</option>
+            <option value="الثالث الثانوي">الثالث الثانوي</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="reg-password" placeholder="كلمة المرور" required minlength="6">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">إنشاء حساب <i
+            class="fa-solid fa-user-plus"></i></button>
+      </form>
+
+      <!-- Auth Footer -->
+      <div class="auth-footer text-center mt-2" style="border-top: 1px solid var(--glass-border); padding-top: 1rem;">
+        <div class="social-links mb-1">
+          <a href="#" class="social-icon" style="color: #1877F2; margin: 0 0.5rem; font-size: 1.2rem;"><i
+              class="fa-brands fa-facebook"></i></a>
+          <a href="https://wa.me/201007073446" class="social-icon"
+            style="color: #25D366; margin: 0 0.5rem; font-size: 1.2rem;"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" class="social-icon" style="color: #FF0000; margin: 0 0.5rem; font-size: 1.2rem;"><i
+              class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p class="text-muted" style="font-size: 0.8rem; margin:0;">جميع الحقوق محفوظة &copy; منصة أ/خالد عبد الواحد</p>
+        <p class="text-muted" style="font-size: 0.75rem; margin:5px 0 0 0;">تم التطوير بواسطة <span
+            style="font-weight:bold; color:var(--primary)">Mahmoud Khafagy</span></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAIN APP (Admin/Student) -->
+  <div id="main-app" class="app-container" style="display:none;">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>منصة أ/خالد عبد الواحد </h2>
+      </div>
+
+      <!-- Admin Nav -->
+      <nav id="admin-nav" class="nav-menu" style="display:none;">
+        <a href="#" class="nav-item active" data-target="admin-dashboard"><i class="fa-solid fa-chart-pie"></i> لوحة
+          التحكم</a>
+        <a href="#" class="nav-item" data-target="admin-courses"><i class="fa-solid fa-book-open"></i> إدارة
+          الكورسات</a>
+        <a href="#" class="nav-item" data-target="admin-exams"><i class="fa-solid fa-clipboard-question"></i> الامتحانات
+          الشاملة</a>
+        <a href="#" class="nav-item" data-target="admin-students"><i class="fa-solid fa-users"></i> الطلاب والدرجات</a>
+      </nav>
+
+      <!-- Student Nav -->
+      <nav id="student-nav" class="nav-menu" style="display:none;">
+        <a href="#" class="nav-item active" data-target="student-dashboard"><i class="fa-solid fa-house"></i>
+          الرئيسية</a>
+        <a href="#" class="nav-item" data-target="student-my-courses"><i class="fa-solid fa-graduation-cap"></i>
+          كورساتي</a>
+        <a href="#" class="nav-item" data-target="student-exams"><i class="fa-solid fa-clipboard-question"></i>
+          الامتحانات الشاملة</a>
+        <a href="#" class="nav-item" data-target="student-profile"><i class="fa-solid fa-user"></i> حسابي وتقييماتي</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="logout-btn" class="btn btn-danger btn-block"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+          تسجيل الخروج</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+      <div class="topbar">
+        <button id="mobile-menu-toggle" class="mobile-toggle"><i class="fa-solid fa-bars"></i></button>
+        <div style="flex:1;"></div>
+        <div class="notifications-wrapper" style="position:relative; margin-left:1.5rem; cursor:pointer;" id="btn-notifications">
+          <i class="fa-solid fa-bell" style="font-size:1.5rem; color:var(--text);"></i>
+          <span id="notif-badge" style="position:absolute; top:-5px; right:-5px; background:var(--danger); color:white; border-radius:50%; width:18px; height:18px; font-size:0.7rem; display:none; justify-content:center; align-items:center;">0</span>
+          <!-- Notifications Dropdown -->
+          <div id="notif-dropdown" class="glass-card" style="display:none; position:absolute; top:40px; left:0; width:300px; max-height:400px; overflow-y:auto; z-index:100; padding:1rem; box-shadow:0 10px 20px rgba(0,0,0,0.2);">
+            <h4 style="border-bottom:1px solid var(--glass-border); padding-bottom:0.5rem; margin-bottom:0.5rem;">الإشعارات</h4>
+            <div id="notif-list"></div>
+          </div>
+        </div>
+        <div class="user-info">
+          <span id="topbar-name">مرحباً...</span>
+          <div class="avatar"><i class="fa-solid fa-user"></i></div>
+        </div>
+      </div>
+
+      <div class="views-container">
+        <!-- ================= ADMIN VIEWS ================= -->
+        <div id="admin-dashboard" class="view admin-view">
+          <h2 class="view-title">نظرة عامة</h2>
+          <div class="stats-grid">
+            <div class="stat-card glass-card">
+              <i class="fa-solid fa-users stat-icon"></i>
+              <div class="stat-details">
+                <h3 id="stat-students">0</h3>
+                <p>إجمالي الطلاب</p>
+              </div>
+            </div>
+            <div class="stat-card glass-card">
+              <i class="fa-solid fa-book stat-icon"></i>
+              <div class="stat-details">
+                <h3 id="stat-courses">0</h3>
+                <p>الكورسات</p>
+              </div>
+            </div>
+            <div class="stat-card glass-card">
+              <i class="fa-solid fa-clipboard-check stat-icon"></i>
+              <div class="stat-details">
+                <h3 id="stat-exams">0</h3>
+                <p>الامتحانات الشاملة</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="admin-courses" class="view admin-view">
+          <div class="flex-between">
+            <h2 class="view-title">إدارة الكورسات</h2>
+            <button class="btn btn-primary" id="btn-create-course"><i class="fa-solid fa-plus"></i> إضافة مجموعة كورس</button>
+          </div>
+          <div class="courses-grid mt-2" id="admin-courses-list">
+            <!-- Courses populated here -->
+          </div>
+        </div>
+
+        <div id="admin-course-detail" class="view admin-view">
+          <div class="flex-between">
+            <button class="btn btn-ghost" id="btn-back-to-courses" onclick="goBackToCourses()"><i class="fa-solid fa-arrow-right"></i> عودة للكورسات</button>
+            <button class="btn btn-success" id="btn-add-content-inside"><i class="fa-solid fa-plus"></i> إضافة محتوى للكورس</button>
+          </div>
+          <div class="glass-card mt-2 p-2" style="display:flex; align-items:center; gap:1.5rem; background:rgba(99,102,241,0.05);">
+            <img id="admin-cd-img" src="" style="width:120px; height:120px; object-fit:cover; border-radius:12px; display:none;" />
+            <div>
+              <h2 class="view-title" id="admin-cd-title" style="margin:0;">...</h2>
+              <p class="text-muted mt-1" id="admin-cd-desc">...</p>
+            </div>
+          </div>
+          <h3 class="mt-2 mb-1">محتويات الكورس</h3>
+          <div id="admin-cd-lessons-list" class="glass-card p-1">
+            <!-- lessons populated here -->
+          </div>
+        </div>
+
+        <div id="admin-exams" class="view admin-view">
+          <div class="flex-between">
+            <h2 class="view-title">إدارة الامتحانات الشاملة</h2>
+            <button class="btn btn-primary" id="btn-create-exam"><i class="fa-solid fa-plus"></i> إضافة امتحان
+              شامل</button>
+          </div>
+          <div class="courses-grid mt-2" id="admin-exams-list">
+            <!-- Exams populated here -->
+          </div>
+        </div>
+
+        <div id="admin-students" class="view admin-view">
+          <div class="flex-between mb-1" style="flex-wrap: wrap; gap: 1rem;">
+            <h2 class="view-title">الطلاب والدرجات</h2>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <input type="text" id="filter-student-search" placeholder="بحث بالاسم أو الرقم..." class="form-control"
+                style="padding:0.5rem; border-radius:5px; border:1px solid var(--glass-border); background:rgba(255,255,255,0.5);">
+              <select id="filter-student-grade" class="form-control"
+                style="padding:0.5rem; border-radius:5px; border:1px solid var(--glass-border); background:rgba(255,255,255,0.5);">
+                <option value="all">كل الصفوف</option>
+                <option value="الرابع الابتدائي">الرابع الابتدائي</option>
+                <option value="الخامس الابتدائي">الخامس الابتدائي</option>
+                <option value="السادس الابتدائي">السادس الابتدائي</option>
+                <option value="الأول الإعدادي">الأول الإعدادي</option>
+                <option value="الثاني الإعدادي">الثاني الإعدادي</option>
+                <option value="الثالث الإعدادي">الثالث الإعدادي</option>
+                <option value="الأول الثانوي">الأول الثانوي</option>
+                <option value="الثاني الثانوي">الثاني الثانوي</option>
+                <option value="الثالث الثانوي">الثالث الثانوي</option>
+              </select>
+            </div>
+          </div>
+          <div class="glass-card mt-2 p-2" style="overflow-x:auto;">
+            <table class="modern-table" style="min-width: 900px;">
+              <thead>
+                <tr>
+                  <th>اسم الطالب</th>
+                  <th>الصف</th>
+                  <th>رقم الطالب</th>
+                  <th>ولي الأمر</th>
+                  <th>الدرجات</th>
+                  <th>إجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="admin-students-table">
+                <!-- Students -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ================= STUDENT VIEWS ================= -->
+        <div id="student-dashboard" class="view student-view">
+          <h2 class="view-title">أهلاً بك، <span id="student-welcome-name"></span></h2>
+          <p class="subtitle">تصفح الكورسات المتاحة للصف: <span id="student-grade-badge" class="badge"></span></p>
+
+          <div class="courses-grid mt-2" id="student-available-courses">
+            <!-- Available courses -->
+          </div>
+        </div>
+
+        <div id="student-my-courses" class="view student-view">
+          <h2 class="view-title">كورساتي</h2>
+          <div class="courses-grid mt-2" id="student-enrolled-courses">
+            <!-- Enrolled courses -->
+          </div>
+        </div>
+
+        <div id="student-exams" class="view student-view">
+          <h2 class="view-title">الامتحانات الشاملة المتاحة</h2>
+          <div class="courses-grid mt-2" id="student-available-exams">
+            <!-- Exams -->
+          </div>
+        </div>
+
+        <div id="student-profile" class="view student-view">
+          <h2 class="view-title">الملف الشخصي والتقييمات</h2>
+          <div class="profile-grid mt-2">
+            <div class="glass-card p-2">
+              <h3>بياناتي</h3>
+              <ul class="profile-list mt-1" id="student-profile-list">
+              </ul>
+            </div>
+            <div class="glass-card p-2">
+              <h3>تقييماتي</h3>
+              <div id="student-grades-list" class="mt-1">
+                <!-- Grades -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXAM SOLVER VIEW -->
+        <div id="standalone-exam-view" class="view">
+          <div class="flex-between mb-1">
+            <button class="btn btn-ghost" id="btn-back-exams"><i class="fa-solid fa-arrow-right"></i> عودة للامتحانات</button>
+            <div id="exam-timer-display" style="font-size:1.5rem; font-weight:bold; color:var(--danger); background:rgba(255,0,0,0.1); padding:0.5rem 1rem; border-radius:8px; display:none;">
+              <i class="fa-regular fa-clock"></i> <span id="exam-timer-text">00:00</span>
+            </div>
+          </div>
+          <div class="glass-card p-2 exam-container-smooth">
+            <h2 class="view-title text-center" id="exam-title-display" style="color:var(--primary); font-size:2rem; border-bottom:2px dashed var(--primary); padding-bottom:1rem; margin-bottom:2rem;">...</h2>
+            <div id="exam-questions-container" class="mt-2"></div>
+            <button id="btn-submit-exam" class="btn btn-success mt-2 btn-block" style="display:none;">تسليم الامتحان
+              النهائي <i class="fa-solid fa-check-double"></i></button>
+            <div id="exam-result-display" class="mt-2 text-center"
+              style="display:none; font-size:1.5rem; font-weight:bold;"></div>
+            <button id="btn-review-exam" class="btn btn-primary mt-1 btn-block" style="display:none;">عرض الإجابات
+              الصحيحة <i class="fa-solid fa-eye"></i></button>
+            <div id="exam-review-container" class="mt-2" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- COURSE PLAYER VIEW -->
+        <div id="course-player" class="view">
+          <button class="btn btn-ghost mb-1" id="btn-back-courses"><i class="fa-solid fa-arrow-right"></i> عودة</button>
+          <h2 class="view-title" id="player-course-title">...</h2>
+
+          <div class="player-layout mt-2">
+            <div class="player-main glass-card">
+
+              <!-- Custom Video Player Wrapper -->
+              <div id="custom-video-wrapper" class="video-container" style="display:none;">
+                <div id="yt-container-holder">
+                  <div id="yt-player-container"></div>
+                </div>
+                <!-- Intercept clicks to prevent downloading/opening youtube -->
+                <div id="video-overlay"
+                  style="position:absolute; top:0; left:0; width:100%; height:calc(100% - 60px); z-index:10;"></div>
+
+                <!-- Custom Controls -->
+                <div class="custom-controls" id="custom-controls">
+                  <div class="controls-progress-bar" id="progress-bar-container">
+                    <div class="controls-progress-fill" id="progress-bar-fill"></div>
+                  </div>
+                  <div class="controls-buttons">
+                    <button id="btn-play-pause" class="ctrl-btn"><i class="fa-solid fa-play"></i></button>
+                    <button id="btn-mute" class="ctrl-btn"><i class="fa-solid fa-volume-high"></i></button>
+                    <span id="time-display" class="time-display">00:00 / 00:00</span>
+                    <div style="flex:1;"></div>
+                    <button id="btn-speed" class="ctrl-btn" style="font-family: monospace; font-weight: bold; font-size: 1.1rem; padding: 0 0.5rem;">1x</button>
+                    <button id="btn-fullscreen" class="ctrl-btn"><i class="fa-solid fa-expand"></i></button>
+                    <!-- Custom Watermark/Logo to hide YT Logo -->
+                    <div class="custom-watermark">أكاديمية خالد</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Placeholder / Messages -->
+              <div id="video-placeholder" class="video-container">
+                <div class="placeholder-video">اختر درساً من القائمة</div>
+              </div>
+
+              <h3 id="current-lesson-title" class="mt-1"></h3>
+              <div id="lesson-files-container" class="mt-1"></div>
+
+              <!-- Quiz Area before lecture -->
+              <div id="quiz-area" class="quiz-area mt-2" style="display:none;">
+                <h3>كويز قبل المحاضرة</h3>
+                <div id="quiz-content"></div>
+                <button id="submit-quiz-btn" class="btn btn-success mt-1">تسليم الكويز <i
+                    class="fa-solid fa-check"></i></button>
+              </div>
+            </div>
+
+            <div class="player-sidebar glass-card" style="display:flex; flex-direction:column; gap:1rem;">
+              <h3 id="player-course-title" class="text-center" style="color:var(--primary); margin-bottom:0.5rem;">محتوى الكورس</h3>
+              
+              <div class="course-section-block">
+                <h4 class="section-tab" style="background:rgba(99,102,241,0.1); padding:0.5rem; border-radius:8px; display:flex; align-items:center; gap:0.5rem; cursor:pointer; opacity:1; border:2px solid var(--primary);" onclick="switchCourseTab('player-lessons-list', this)"><i class="fa-solid fa-person-chalkboard"></i> فيديوهات الشرح</h4>
+                <ul class="lesson-list mt-1" id="player-lessons-list"></ul>
+              </div>
+
+              <div class="course-section-block">
+                <h4 class="section-tab" style="background:rgba(16,185,129,0.1); padding:0.5rem; border-radius:8px; display:flex; align-items:center; gap:0.5rem; cursor:pointer; opacity:0.6;" onclick="switchCourseTab('player-exercises-list', this)"><i class="fa-solid fa-file-pen"></i> حل التدريبات</h4>
+                <ul class="lesson-list mt-1 hidden-section" id="player-exercises-list"></ul>
+              </div>
+
+              <div class="course-section-block">
+                <h4 class="section-tab" style="background:rgba(245,158,11,0.1); padding:0.5rem; border-radius:8px; display:flex; align-items:center; gap:0.5rem; cursor:pointer; opacity:0.6;" onclick="switchCourseTab('player-exams-list', this)"><i class="fa-solid fa-file-circle-check"></i> الامتحانات الشاملة</h4>
+                <ul class="lesson-list mt-1 hidden-section" id="player-exams-list"></ul>
+              </div>
+
+              <div class="course-section-block">
+                <h4 class="section-tab" style="background:rgba(236,72,153,0.1); padding:0.5rem; border-radius:8px; display:flex; align-items:center; gap:0.5rem; cursor:pointer; opacity:0.6;" onclick="switchCourseTab('player-pdfs-list', this)"><i class="fa-solid fa-file-pdf"></i> المذكرات والملفات</h4>
+                <ul class="lesson-list mt-1 hidden-section" id="player-pdfs-list"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- App Footer -->
+      <footer class="app-footer glass-card text-center"
+        style="margin: 0 2rem 2rem 2rem; padding: 1.5rem; flex-shrink: 0; border-radius: var(--radius-lg);">
+        <div class="social-links mb-1">
+          <a href="#" class="social-icon"
+            style="color: #1877F2; margin: 0 0.5rem; font-size: 1.5rem; transition: 0.3s;"><i
+              class="fa-brands fa-facebook"></i></a>
+          <a href="https://wa.me/201007073446" class="social-icon"
+            style="color: #25D366; margin: 0 0.5rem; font-size: 1.5rem; transition: 0.3s;"><i
+              class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" class="social-icon"
+            style="color: #FF0000; margin: 0 0.5rem; font-size: 1.5rem; transition: 0.3s;"><i
+              class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p class="text-muted" style="font-size: 0.9rem; margin: 0;">جميع الحقوق محفوظة &copy; منصة أ. خالد عبد الواحد
+        </p>
+        <p class="text-muted" style="font-size: 0.8rem; margin: 5px 0 0 0;">تم التطوير بواسطة <span
+            style="font-weight:bold; color:var(--primary)">Mahmoud Khafagy</span></p>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- MODALS -->
+
+  <!-- Add Course Modal -->
+  <div id="course-modal" class="modal-backdrop">
+    <div class="modal glass-card">
+      <button class="modal-close" id="course-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 id="course-modal-title">إضافة كورس جديد</h3>
+      <form id="course-form" class="mt-2">
+        <div class="form-group">
+          <input type="text" id="course-title" placeholder="اسم الكورس (مثلاً: كورس النحو - الشهر الأول)" required>
+        </div>
+        <div class="form-group">
+          <label style="font-size:0.9rem; color:var(--text-muted);">صورة الغلاف للكورس (اختياري)</label>
+          <input type="file" id="course-img" accept="image/*">
+        </div>
+        <div class="form-group">
+          <select id="course-month">
+            <option value="" selected>تخصيص الكورس لشهر / قسم (اختياري)</option>
+            <option value="شهر أغسطس">شهر أغسطس</option>
+            <option value="شهر سبتمبر">شهر سبتمبر</option>
+            <option value="شهر أكتوبر">شهر أكتوبر</option>
+            <option value="شهر نوفمبر">شهر نوفمبر</option>
+            <option value="شهر ديسمبر">شهر ديسمبر</option>
+            <option value="شهر يناير">شهر يناير</option>
+            <option value="شهر فبراير">شهر فبراير</option>
+            <option value="شهر مارس">شهر مارس</option>
+            <option value="شهر أبريل">شهر أبريل</option>
+            <option value="شهر مايو">شهر مايو</option>
+            <option value="مراجعات نهائية">مراجعات نهائية</option>
+            <option value="عام">عام (بدون شهر)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select id="course-grade" required>
+            <!-- Grades list ... -->
+            <option value="" disabled selected>الصف الدراسي المستهدف</option>
+            <option value="الرابع الابتدائي">الرابع الابتدائي</option>
+            <option value="الخامس الابتدائي">الخامس الابتدائي</option>
+            <option value="السادس الابتدائي">السادس الابتدائي</option>
+            <option value="الأول الإعدادي">الأول الإعدادي</option>
+            <option value="الثاني الإعدادي">الثاني الإعدادي</option>
+            <option value="الثالث الإعدادي">الثالث الإعدادي</option>
+            <option value="الأول الثانوي">الأول الثانوي</option>
+            <option value="الثاني الثانوي">الثاني الثانوي</option>
+            <option value="الثالث الثانوي">الثالث الثانوي</option>
+            <option value="عام">عام (الكل)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea id="course-desc" placeholder="وصف الكورس" rows="3" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mt-2">حفظ مجموعة الكورس</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Lesson to Course Modal -->
+  <div id="add-lesson-modal" class="modal-backdrop">
+    <div class="modal glass-card" style="max-height:90vh; overflow-y:auto;">
+      <button class="modal-close" id="add-lesson-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 id="add-lesson-modal-title">إضافة محتوى للكورس</h3>
+      <form id="add-lesson-form" class="mt-2">
+        <input type="hidden" id="target-course-id">
+        <div class="form-group">
+          <select id="lesson-type" required>
+            <option value="شرح">فيديو شرح</option>
+            <option value="حل تدريبات">فيديو حل تدريبات</option>
+            <option value="ملف PDF">ملف PDF / مذكرة</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="text" id="lesson-title" placeholder="عنوان الدرس" required>
+        </div>
+        <div class="form-group">
+          <input type="url" id="lesson-url" placeholder="رابط فيديو اليوتيوب">
+        </div>
+        <div class="form-group flex items-center">
+          <label style="flex:1; font-size:0.9rem;">رابط ملف الـ PDF (جوجل درايف - اختياري)</label>
+          <input type="url" id="lesson-file-url" placeholder="انسخ رابط جوجل درايف هنا" style="flex:2;" class="form-control">
+        </div>
+        <div class="glass-card p-1 mt-1">
+          <h4>كويز قبل المحاضرة (اختياري)</h4>
+          <div class="form-group mt-1">
+            <input type="number" id="lesson-quiz-time" placeholder="المدة بالدقائق (مثال: 15)">
+          </div>
+          <div id="lesson-quiz-questions"></div>
+          <button type="button" id="btn-add-lesson-quiz-q" class="btn btn-ghost btn-sm mt-1"><i class="fa-solid fa-plus"></i> إضافة سؤال كويز</button>
+        </div>
+        <button type="submit" class="btn btn-success btn-block mt-2">حفظ المحتوى</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Standalone Exam Modal -->
+  <div id="exam-modal" class="modal-backdrop">
+    <div class="modal glass-card">
+      <button class="modal-close" id="exam-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 id="exam-modal-title">إضافة امتحان شامل</h3>
+      <form id="exam-form" class="mt-2">
+        <div class="form-group">
+          <input type="text" id="exam-title" placeholder="اسم الامتحان (مثال: امتحان شهر أكتوبر)" required>
+        </div>
+        <div class="form-group">
+          <input type="number" id="exam-time-limit" placeholder="مدة الامتحان بالدقائق (مثال: 60)" required min="1">
+        </div>
+        <div class="form-group" style="display:flex; gap:0.5rem;">
+          <select id="exam-grade" required style="flex:1;">
+            <option value="" disabled selected>الصف الدراسي المستهدف</option>
+            <option value="الرابع الابتدائي">الرابع الابتدائي</option>
+            <option value="الخامس الابتدائي">الخامس الابتدائي</option>
+            <option value="السادس الابتدائي">السادس الابتدائي</option>
+            <option value="الأول الإعدادي">الأول الإعدادي</option>
+            <option value="الثاني الإعدادي">الثاني الإعدادي</option>
+            <option value="الثالث الإعدادي">الثالث الإعدادي</option>
+            <option value="الأول الثانوي">الأول الثانوي</option>
+            <option value="الثاني الثانوي">الثاني الثانوي</option>
+            <option value="الثالث الثانوي">الثالث الثانوي</option>
+            <option value="عام">عام (الكل)</option>
+          </select>
+          <select id="exam-month" style="flex:1;" required>
+            <option value="" disabled selected>الشريك مع شهر (لإضافته للكورس)</option>
+            <option value="يناير">يناير</option>
+            <option value="فبراير">فبراير</option>
+            <option value="مارس">مارس</option>
+            <option value="أبريل">أبريل</option>
+            <option value="مايو">مايو</option>
+            <option value="يونيو">يونيو</option>
+            <option value="يوليو">يوليو</option>
+            <option value="أغسطس">أغسطس</option>
+            <option value="سبتمبر">سبتمبر</option>
+            <option value="أكتوبر">أكتوبر</option>
+            <option value="نوفمبر">نوفمبر</option>
+            <option value="ديسمبر">ديسمبر</option>
+            <option value="عام">بدون شهر محدد</option>
+          </select>
+        </div>
+
+        <div class="lessons-builder mt-1">
+          <h4>الأسئلة</h4>
+          <div id="exam-questions-builder"></div>
+          <button type="button" id="btn-add-exam-question" class="btn btn-ghost mt-1"><i class="fa-solid fa-plus"></i>
+            إضافة سؤال</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mt-2">حفظ الامتحان</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Top 5 Modal -->
+  <div id="top-students-modal" class="modal-backdrop">
+    <div class="modal glass-card" style="max-width: 600px;">
+      <button class="modal-close" id="top-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="color:var(--primary); text-align:center; margin-bottom:1rem;"><i class="fa-solid fa-trophy" style="color:gold;"></i> لوحة الشرف (أوائل الامتحان)</h3>
+      <h4 id="top-modal-exam-title" style="text-align:center; margin-bottom:1.5rem;" class="text-muted">...</h4>
+      <div id="top-students-list">
+        <!-- Top students populated here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- YT IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script type="module" src="app.js"></script>
+</body>
+
+</html>
